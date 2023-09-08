@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctcu5dn2xl11y"]
+
+[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_uf5i2"]
+[ext_resource type="Texture2D" uid="uid://blmj3vp6gbla0" path="res://owen.png" id="2_6ob34"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sirk4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bh2g8"]
+albedo_texture = ExtResource("2_6ob34")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wu4js"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_uf5i2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_sirk4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_bh2g8")
+mesh = SubResource("CapsuleMesh_wu4js")

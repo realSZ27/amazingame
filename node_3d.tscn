@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://2mpgw2vaftt1"]
+
+[ext_resource type="PackedScene" uid="uid://ctcu5dn2xl11y" path="res://character_body_3d.tscn" id="1_3qh8d"]
+[ext_resource type="Texture2D" uid="uid://dqsba6na0ovhn" path="res://jimmiesleep.png" id="1_y3mwa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j6kf2"]
+size = Vector3(40.8484, 1, 33.5413)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njl7s"]
+albedo_texture = ExtResource("1_y3mwa")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qh580"]
+size = Vector2(46.95, 37.885)
+
+[node name="Scene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0156612, 0, 0.0034523)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0265334, 0, 0)
+shape = SubResource("BoxShape3D_j6kf2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.885, 0, 0, 0, 0.885, 0, 0, 0, 0.885, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_njl7s")
+mesh = SubResource("PlaneMesh_qh580")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="StaticBody3D"]
+transform = Transform3D(0.962692, -0.140582, 0.231217, 0, 0.854459, 0.519519, -0.2706, -0.500137, 0.82258, 13.3947, 8.89008, 15.6419)
+sky_mode = 1
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_3qh8d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22212, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.711793, -0.172301, 0.680928, 0, 0.969445, 0.245307, -0.702389, -0.174608, 0.690045, 16.4338, 5.95524, 20.9779)
+fov = 30.0
